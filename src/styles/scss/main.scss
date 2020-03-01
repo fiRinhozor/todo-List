@@ -1,0 +1,10 @@
+@import "~bootstrap/scss/bootstrap";
+
+$h3-bg-color: tan;
+$h3-text-color: red;
+
+h3 {
+  background-color: $h3-bg-color;
+  color: $h3-text-color;
+  font-size: 30px;
+}
