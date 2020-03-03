@@ -8,33 +8,91 @@ const enterValue = document.querySelector(".enter");
 const clearButton = document.getElementById("clear-items");
 let todoList = [];
 
-addButton.addEventListener("click", function () {
+
+function listOfItems() {
   var inputSorted = itemInput.value;
   var newElement = document.createElement("div");
-  newElement.innerHTML = inputSorted;
 
-  //delete icon
+
   const deleteBtn = document.createElement("button");
   deleteBtn.className = "glyphicon glyphicon-remove";
   deleteBtn.style.cssFloat = "right";
 
-  newElement.appendChild(deleteBtn);
-
-  if (inputSorted == "" || inputSorted == null) {
+  if (
+    inputSorted == "" ||
+    inputSorted.length == 0 ||
+    inputSorted == null
+  ) {
     enterValue.innerHTML = "Please Enter Some Value";
     enterValue.classList.add("showItem", "alert-danger");
+    newElement = "";
+  } else {
+    newElement.innerHTML = inputSorted;
+    newElement.appendChild(deleteBtn);
+    itemList.appendChild(newElement);
+  }
+  itemInput.value = "";
+
+
+
+
+}
+
+/*function deleteButton() {
+  const deleteBtn = document.createElement("button");
+  deleteBtn.className = "glyphicon glyphicon-remove";
+  deleteBtn.style.cssFloat = "right";
+  itemList.appendChild(deleteBtn);
+}*/
+
+
+function validateForm() {
+  if (itemInput.value == "" || itemInput.value == null) {
+    enterValue.innerHTML = "Please Enter Some Value";
+    enterValue.classList.add("showItem", "alert-danger");
+  } else if (itemInput.value != "") {
+    enterValue.innerHTML = "";
+    enterValue.classList.remove("showItem", "alert-danger");
+  } else {
+    itemInput.value = "";
+  }
+}
+
+
+addButton.addEventListener("click", function () {
+  listOfItems();
+});
+
+clearButton.addEventListener("click", function () {
+  itemList.innerHTML = "";
+});
+
+
+
+
+
+/*if (itemInput.value == "" || itemInput.value == null) {
+  alert("Please Fill in all sections");
+  return;
+} else {
+  alert("here");
+} */
+
+
+
+/*function validateForm() {
+  if (
+    itemInput.value.length == 0 ||
+    itemInput.value == "" ||
+    itemInput.value == null
+  ) {
+    enterValue.innerHTML = "Please Enter Some Value";
+    enterValue.classList.add("showItem", "alert-danger");
+    return false;
   } else if (inputSorted != "") {
     enterValue.innerHTML = "";
     enterValue.classList.remove("showItem", "alert-danger");
   } else {
     itemInput.value = "";
   }
-  itemInput.value = "";
-
-
-  itemList.appendChild(newElement);
-});
-
-clearButton.addEventListener("click", function () {
-  itemList.innerHTML = "";
-});
+} */
