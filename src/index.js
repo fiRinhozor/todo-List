@@ -8,21 +8,23 @@ const enterValue = document.querySelector(".enter");
 const clearButton = document.getElementById("clear-items");
 let todoList = [];
 
+var deleteBtn;
 
-function listOfItems() {
+function handleItem() {
   var inputSorted = itemInput.value;
   var newElement = document.createElement("div");
+  newElement.className = "test";
 
-
-  const deleteBtn = document.createElement("button");
-  deleteBtn.className = "glyphicon glyphicon-remove";
+  deleteBtn = document.createElement("button");
+  deleteBtn.className = "remove";
   deleteBtn.style.cssFloat = "right";
 
-  if (
-    inputSorted == "" ||
-    inputSorted.length == 0 ||
-    inputSorted == null
-  ) {
+  var del = document.getElementsByClassName("remove");
+  for (var i = 0; i < del.length; i++) {
+    del[i].addEventListener("click", deleteListElement);
+  }
+
+  if (inputSorted == "" || inputSorted.length == 0 || inputSorted == null) {
     enterValue.innerHTML = "Please Enter Some Value";
     enterValue.classList.add("showItem", "alert-danger");
     newElement = "";
@@ -32,19 +34,23 @@ function listOfItems() {
     itemList.appendChild(newElement);
   }
   itemInput.value = "";
-
-
-
-
 }
 
-/*function deleteButton() {
-  const deleteBtn = document.createElement("button");
-  deleteBtn.className = "glyphicon glyphicon-remove";
-  deleteBtn.style.cssFloat = "right";
-  itemList.appendChild(deleteBtn);
-}*/
+function deleteListElement() {
+  //remove the parent of button from its grand parent
+  this.parentNode.parentNode.removeChild(this.parentNode);
+}
 
+itemInput.addEventListener("keyup", function(event) {
+  // Number 13 is the "Enter" key on the keyboard
+
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("add").click();
+  }
+});
 
 function validateForm() {
   if (itemInput.value == "" || itemInput.value == null) {
@@ -58,18 +64,13 @@ function validateForm() {
   }
 }
 
-
-addButton.addEventListener("click", function () {
-  listOfItems();
+addButton.addEventListener("click", function() {
+  handleItem();
 });
 
-clearButton.addEventListener("click", function () {
+clearButton.addEventListener("click", function() {
   itemList.innerHTML = "";
 });
-
-
-
-
 
 /*if (itemInput.value == "" || itemInput.value == null) {
   alert("Please Fill in all sections");
@@ -77,8 +78,6 @@ clearButton.addEventListener("click", function () {
 } else {
   alert("here");
 } */
-
-
 
 /*function validateForm() {
   if (
@@ -96,3 +95,20 @@ clearButton.addEventListener("click", function () {
     itemInput.value = "";
   }
 } */
+
+/*setTimeout(function () {
+      enterValue.innerHTML = "Please Enter Some Value";
+      enterValue.classList.add("showItem", "alert-danger");
+    }, 1000);*/
+
+/*function emptyInput() {
+  enterValue.innerHTML = "Please Enter Some Value";
+  enterValue.classList.add("showItem", "alert-danger");
+} */
+
+/*function deleteButton() {
+  const deleteBtn = document.createElement("button");
+  deleteBtn.className = "glyphicon glyphicon-remove";
+  deleteBtn.style.cssFloat = "right";
+  itemList.appendChild(deleteBtn);
+}*/
