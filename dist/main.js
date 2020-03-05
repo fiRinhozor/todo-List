@@ -23363,4 +23363,4 @@ module.exports = exported;
 /***/ })
 
 /******/ });
-//# sourceMappingURL=main.bundle.js.map
+//# sourceMappingURL=main.js.map
