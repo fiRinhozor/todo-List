@@ -47,6 +47,7 @@ function handleItem() {
 
 
 
+
   if (inputSorted == "" || inputSorted.length == 0 || inputSorted == null) {
     enterValue.innerHTML = "Please Enter Some Value";
     enterValue.classList.add("showItem", "alert-danger");
@@ -58,6 +59,11 @@ function handleItem() {
     itemList.appendChild(newElement);
   }
   itemInput.value = "";
+
+  if (inputSorted != "") {
+    enterValue.innerHTML = "";
+    enterValue.classList.remove("showItem", "alert-danger");
+  }
 
 }
 
@@ -84,17 +90,6 @@ itemInput.addEventListener("keyup", function (event) {
   }
 });
 
-function validateForm() {
-  if (itemInput.value == "" || itemInput.value == null) {
-    enterValue.innerHTML = "Please Enter Some Value";
-    enterValue.classList.add("showItem", "alert-danger");
-  } else if (itemInput.value != "") {
-    enterValue.innerHTML = "";
-    enterValue.classList.remove("showItem", "alert-danger");
-  } else {
-    itemInput.value = "";
-  }
-}
 
 addButton.addEventListener("click", function () {
   handleItem();
