@@ -1,6 +1,10 @@
 import "../src/style.css";
 import "./styles/scss/main.scss";
 import "bootstrap";
+import "@fortawesome/fontawesome-free/js/fontawesome";
+import "@fortawesome/fontawesome-free/js/solid";
+import "@fortawesome/fontawesome-free/js/regular";
+import "@fortawesome/fontawesome-free/js/brands";
 const itemInput = document.getElementById("list-input");
 const addButton = document.getElementById("add");
 const itemList = document.querySelector(".item-list");
@@ -9,6 +13,7 @@ const clearButton = document.getElementById("clear-items");
 let todoList = [];
 
 var deleteBtn;
+var editBtn;
 
 function handleItem() {
   var inputSorted = itemInput.value;
@@ -16,8 +21,10 @@ function handleItem() {
   newElement.className = "test";
 
   deleteBtn = document.createElement("button");
-  deleteBtn.className = "remove";
-  deleteBtn.style.cssFloat = "right";
+  deleteBtn.className = "remove fas fa-minus-circle";
+
+  editBtn = document.createElement("button");
+  editBtn.className = "check fas fa-check";
 
   var del = document.getElementsByClassName("remove");
   for (var i = 0; i < del.length; i++) {
@@ -31,6 +38,7 @@ function handleItem() {
   } else {
     newElement.innerHTML = inputSorted;
     newElement.appendChild(deleteBtn);
+    newElement.appendChild(editBtn);
     itemList.appendChild(newElement);
   }
   itemInput.value = "";

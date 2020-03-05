@@ -1,7 +1,12 @@
 @import "~bootstrap/scss/bootstrap";
-
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+@import "node_modules/bootstrap/scss/bootstrap";
 $h3-bg-color: tan;
-$text-color: red;
+$padding-icons: 7px;
+
+$theme-colors: #ff4136;
 
 body {
   width: 100%;
@@ -13,9 +18,17 @@ body {
 }
 
 h1 {
-  color: $text-color;
+  color: $theme-colors;
 }
 
 .item-list {
   font-size: 30px;
+}
+
+.remove,
+.check {
+  float: right;
+  padding-top: $padding-icons;
+  font-size: 35px;
+  color: $theme-colors;
 }

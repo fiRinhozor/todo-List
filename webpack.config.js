@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const autoprefixer = require("autoprefixer");
 module.exports = {
   entry: "./src/index.js",
+  devtool: "source-map",
   output: {
     filename: "main.js",
     path: path.resolve(__dirname, "dist")
