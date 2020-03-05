@@ -13,23 +13,39 @@ const clearButton = document.getElementById("clear-items");
 let todoList = [];
 
 var deleteBtn;
-var editBtn;
+var completeBtn;
 
 function handleItem() {
   var inputSorted = itemInput.value;
   var newElement = document.createElement("div");
-  newElement.className = "test";
+  newElement.className = "gege";
 
   deleteBtn = document.createElement("button");
   deleteBtn.className = "remove fas fa-minus-circle";
 
-  editBtn = document.createElement("button");
-  editBtn.className = "check fas fa-check";
+  completeBtn = document.createElement("button");
+  completeBtn.className = "complete fas fa-check";
+  completeBtn.id = "pew"
 
+
+  //remove element
   var del = document.getElementsByClassName("remove");
   for (var i = 0; i < del.length; i++) {
     del[i].addEventListener("click", deleteListElement);
   }
+
+
+  //complete element
+  var cbox = document.querySelectorAll(".gege");
+  var a = document.querySelectorAll("#pew");
+  for (let i = 0; i < cbox.length; i++) {
+    cbox[i].addEventListener("click", function () {
+      cbox[i].classList.add("done");
+      console.log(cbox.target);
+    });
+  }
+
+
 
   if (inputSorted == "" || inputSorted.length == 0 || inputSorted == null) {
     enterValue.innerHTML = "Please Enter Some Value";
@@ -38,18 +54,26 @@ function handleItem() {
   } else {
     newElement.innerHTML = inputSorted;
     newElement.appendChild(deleteBtn);
-    newElement.appendChild(editBtn);
+    newElement.appendChild(completeBtn);
     itemList.appendChild(newElement);
   }
   itemInput.value = "";
+
 }
+
+
+document.querySelectorAll(".gege").forEach(box =>
+  box.addEventListener("click", () => box.classList.toggle("red"))
+);
+
 
 function deleteListElement() {
   //remove the parent of button from its grand parent
   this.parentNode.parentNode.removeChild(this.parentNode);
 }
 
-itemInput.addEventListener("keyup", function(event) {
+
+itemInput.addEventListener("keyup", function (event) {
   // Number 13 is the "Enter" key on the keyboard
 
   if (event.keyCode === 13) {
@@ -72,51 +96,10 @@ function validateForm() {
   }
 }
 
-addButton.addEventListener("click", function() {
+addButton.addEventListener("click", function () {
   handleItem();
 });
 
-clearButton.addEventListener("click", function() {
+clearButton.addEventListener("click", function () {
   itemList.innerHTML = "";
 });
-
-/*if (itemInput.value == "" || itemInput.value == null) {
-  alert("Please Fill in all sections");
-  return;
-} else {
-  alert("here");
-} */
-
-/*function validateForm() {
-  if (
-    itemInput.value.length == 0 ||
-    itemInput.value == "" ||
-    itemInput.value == null
-  ) {
-    enterValue.innerHTML = "Please Enter Some Value";
-    enterValue.classList.add("showItem", "alert-danger");
-    return false;
-  } else if (inputSorted != "") {
-    enterValue.innerHTML = "";
-    enterValue.classList.remove("showItem", "alert-danger");
-  } else {
-    itemInput.value = "";
-  }
-} */
-
-/*setTimeout(function () {
-      enterValue.innerHTML = "Please Enter Some Value";
-      enterValue.classList.add("showItem", "alert-danger");
-    }, 1000);*/
-
-/*function emptyInput() {
-  enterValue.innerHTML = "Please Enter Some Value";
-  enterValue.classList.add("showItem", "alert-danger");
-} */
-
-/*function deleteButton() {
-  const deleteBtn = document.createElement("button");
-  deleteBtn.className = "glyphicon glyphicon-remove";
-  deleteBtn.style.cssFloat = "right";
-  itemList.appendChild(deleteBtn);
-}*/

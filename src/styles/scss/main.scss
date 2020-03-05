@@ -4,7 +4,7 @@
 @import "node_modules/bootstrap/scss/mixins";
 @import "node_modules/bootstrap/scss/bootstrap";
 $h3-bg-color: tan;
-$padding-icons: 7px;
+$padding-icons: 9px;
 
 $theme-colors: #ff4136;
 
@@ -24,9 +24,15 @@ h1 {
 .item-list {
   font-size: 30px;
 }
+.done {
+  text-decoration: line-through;
+}
+.red {
+  background-color: orangered;
+}
 
 .remove,
-.check {
+.complete {
   float: right;
   padding-top: $padding-icons;
   font-size: 35px;
