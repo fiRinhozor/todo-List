@@ -45,9 +45,6 @@ function handleItem() {
     });
   }
 
-
-
-
   if (inputSorted == "" || inputSorted.length == 0 || inputSorted == null) {
     enterValue.innerHTML = "Please Enter Some Value";
     enterValue.classList.add("showItem", "alert-danger");
@@ -66,12 +63,6 @@ function handleItem() {
   }
 
 }
-
-
-document.querySelectorAll(".gege").forEach(box =>
-  box.addEventListener("click", () => box.classList.toggle("red"))
-);
-
 
 function deleteListElement() {
   //remove the parent of button from its grand parent

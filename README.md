@@ -1,5 +1,5 @@
 Clone of Todo List.
-HTML
-VanillaJS
-Scss
+HTML,
+VanillaJS,
+Scss,
 Webpack
