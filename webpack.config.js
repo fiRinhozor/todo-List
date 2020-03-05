@@ -3,14 +3,14 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const autoprefixer = require("autoprefixer");
 module.exports = {
   entry: "./src/index.js",
+  mode: "development",
   devtool: "source-map",
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "dist")
+    path: path.resolve(__dirname, "dist"),
+    filename: "main.bundle.js"
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: [/.js$/],
         exclude: /(node_modules)/,
         use: {
@@ -22,8 +22,7 @@ module.exports = {
       },
       {
         test: /\.(scss)$/,
-        use: [
-          {
+        use: [{
             loader: "style-loader" // inject CSS to page
           },
           {
@@ -32,7 +31,7 @@ module.exports = {
           {
             loader: "postcss-loader", // Run postcss actions
             options: {
-              plugins: function() {
+              plugins: function () {
                 // postcss plugins, can be exported to postcss.config.js
                 return [require("autoprefixer")];
               }
@@ -56,5 +55,7 @@ module.exports = {
       }
     })
   ],
-  resolve: { extensions: [".js", ".ts"] }
+  resolve: {
+    extensions: [".js", ".ts"]
+  }
 };
