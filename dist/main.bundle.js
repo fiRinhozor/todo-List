@@ -23297,12 +23297,6 @@ function handleItem() {
   }
 }
 
-document.querySelectorAll(".gege").forEach(function (box) {
-  return box.addEventListener("click", function () {
-    return box.classList.toggle("red");
-  });
-});
-
 function deleteListElement() {
   //remove the parent of button from its grand parent
   this.parentNode.parentNode.removeChild(this.parentNode);
@@ -23369,4 +23363,4 @@ module.exports = exported;
 /***/ })
 
 /******/ });
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=main.bundle.js.map
