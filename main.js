@@ -23249,39 +23249,16 @@ var completeBtn;
 function handleItem() {
   var inputSorted = itemInput.value;
   var newElement = document.createElement("div");
-  newElement.className = "gege";
+  newElement.className = "newElm";
   deleteBtn = document.createElement("button");
   deleteBtn.className = "remove fas fa-minus-circle";
   completeBtn = document.createElement("button");
   completeBtn.className = "complete fas fa-check";
   completeBtn.id = "pew"; //remove element
 
-  var del = document.getElementsByClassName("remove");
-
-  for (var i = 0; i < del.length; i++) {
-    del[i].addEventListener("click", deleteListElement);
-  } //complete element
-
-
-  var cbox = document.querySelectorAll(".gege");
-  var a = document.querySelectorAll("#pew");
-
-  var _loop = function _loop(_i) {
-    cbox[_i].addEventListener("click", function () {
-      cbox[_i].classList.add("done");
-
-      console.log(cbox.target);
-    });
-  };
-
-  for (var _i = 0; _i < cbox.length; _i++) {
-    _loop(_i);
-  }
-
   if (inputSorted == "" || inputSorted.length == 0 || inputSorted == null) {
     enterValue.innerHTML = "Please Enter Some Value";
     enterValue.classList.add("showItem", "alert-danger");
-    newElement = "";
   } else {
     newElement.innerHTML = inputSorted;
     newElement.appendChild(deleteBtn);
@@ -23294,6 +23271,27 @@ function handleItem() {
   if (inputSorted != "") {
     enterValue.innerHTML = "";
     enterValue.classList.remove("showItem", "alert-danger");
+  } //delete element
+
+
+  var del = document.getElementsByClassName("remove");
+
+  for (var i = 0; i < del.length; i++) {
+    del[i].addEventListener("click", deleteListElement);
+  } //complete element
+
+
+  var cbox = document.querySelectorAll(".newElm");
+  var a = document.querySelectorAll("#pew");
+
+  var _loop = function _loop(_i) {
+    cbox[_i].addEventListener("click", function () {
+      cbox[_i].classList.add("done");
+    });
+  };
+
+  for (var _i = 0; _i < cbox.length; _i++) {
+    _loop(_i);
   }
 }
 
