@@ -31,6 +31,10 @@ function handleItem() {
 
 
   //remove element
+  var del = document.getElementsByClassName("remove");
+  for (var i = 0; i < del.length; i++) {
+    del[i].addEventListener("click", deleteListElement);
+  }
 
   if (inputSorted == "" || inputSorted.length == 0 || inputSorted == null) {
     enterValue.innerHTML = "Please Enter Some Value";
@@ -49,10 +53,6 @@ function handleItem() {
   }
 
   //delete element
-  var del = document.getElementsByClassName("remove");
-  for (var i = 0; i < del.length; i++) {
-    del[i].addEventListener("click", deleteListElement);
-  }
 
 
   //complete element
