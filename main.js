@@ -23256,6 +23256,12 @@ function handleItem() {
   completeBtn.className = "complete fas fa-check";
   completeBtn.id = "pew"; //remove element
 
+  var del = document.getElementsByClassName("remove");
+
+  for (var i = 0; i < del.length; i++) {
+    del[i].addEventListener("click", deleteListElement);
+  }
+
   if (inputSorted == "" || inputSorted.length == 0 || inputSorted == null) {
     enterValue.innerHTML = "Please Enter Some Value";
     enterValue.classList.add("showItem", "alert-danger");
@@ -23272,13 +23278,7 @@ function handleItem() {
     enterValue.innerHTML = "";
     enterValue.classList.remove("showItem", "alert-danger");
   } //delete element
-
-
-  var del = document.getElementsByClassName("remove");
-
-  for (var i = 0; i < del.length; i++) {
-    del[i].addEventListener("click", deleteListElement);
-  } //complete element
+  //complete element
 
 
   var cbox = document.querySelectorAll(".newElm");
