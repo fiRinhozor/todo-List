@@ -12,13 +12,15 @@ const enterValue = document.querySelector(".enter");
 const clearButton = document.getElementById("clear-items");
 let todoList = [];
 
+
 var deleteBtn;
 var completeBtn;
+
 
 function handleItem() {
   var inputSorted = itemInput.value;
   var newElement = document.createElement("div");
-  newElement.className = "gege";
+  newElement.className = "newElm";
 
   deleteBtn = document.createElement("button");
   deleteBtn.className = "remove fas fa-minus-circle";
@@ -29,26 +31,10 @@ function handleItem() {
 
 
   //remove element
-  var del = document.getElementsByClassName("remove");
-  for (var i = 0; i < del.length; i++) {
-    del[i].addEventListener("click", deleteListElement);
-  }
-
-
-  //complete element
-  var cbox = document.querySelectorAll(".gege");
-  var a = document.querySelectorAll("#pew");
-  for (let i = 0; i < cbox.length; i++) {
-    cbox[i].addEventListener("click", function () {
-      cbox[i].classList.add("done");
-      console.log(cbox.target);
-    });
-  }
 
   if (inputSorted == "" || inputSorted.length == 0 || inputSorted == null) {
     enterValue.innerHTML = "Please Enter Some Value";
     enterValue.classList.add("showItem", "alert-danger");
-    newElement = "";
   } else {
     newElement.innerHTML = inputSorted;
     newElement.appendChild(deleteBtn);
@@ -62,7 +48,24 @@ function handleItem() {
     enterValue.classList.remove("showItem", "alert-danger");
   }
 
+  //delete element
+  var del = document.getElementsByClassName("remove");
+  for (var i = 0; i < del.length; i++) {
+    del[i].addEventListener("click", deleteListElement);
+  }
+
+
+  //complete element
+  var cbox = document.querySelectorAll(".newElm");
+  var a = document.querySelectorAll("#pew");
+  for (let i = 0; i < cbox.length; i++) {
+    cbox[i].addEventListener("click", function () {
+      cbox[i].classList.add("done");
+    });
+  }
+
 }
+
 
 function deleteListElement() {
   //remove the parent of button from its grand parent
